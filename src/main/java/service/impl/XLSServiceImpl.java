@@ -4,10 +4,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.RichTextString;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import service.BaseService;
@@ -44,6 +41,11 @@ public class XLSServiceImpl implements BaseService {
     @Override
     public void addSheet(String sheet) {
         workbook.createSheet(sheet);
+    }
+
+    @Override
+    public Sheet getSheet(String sheet) {
+        return workbook.getSheet(sheet);
     }
 
     @Override
@@ -86,6 +88,7 @@ public class XLSServiceImpl implements BaseService {
         }
     }
 
+    @Deprecated
     public void addCell(HSSFCell cell, Object o){
         if(o instanceof String){
             cell.setCellValue((String) o);

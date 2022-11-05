@@ -2,6 +2,7 @@ package service;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.File;
@@ -13,6 +14,7 @@ public interface BaseService {
 
     Workbook getWorkBook();
     void addSheet(String sheet);
+    Sheet getSheet(String sheet);
     void removeSheet(String sheet);
 
     void readFile(File file);

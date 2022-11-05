@@ -51,6 +51,11 @@ public class XLSXServiceImpl implements BaseService {
     }
 
     @Override
+    public Sheet getSheet(String sheet) {
+        return workbook.getSheet(sheet);
+    }
+
+    @Override
     public void removeSheet(String sheet) {
         workbook.removeSheetAt(workbook.getSheetIndex(sheet));
     }
@@ -90,7 +95,13 @@ public class XLSXServiceImpl implements BaseService {
         }
     }
 
+    public XSSFRow addRow(){
+        int lastRowNum = curSheet.getLastRowNum();
+        return curSheet.createRow(lastRowNum + 1);
+    }
+    @Deprecated
     public void addCell(XSSFCell cell, Object o){
+
         if(o instanceof String){
             cell.setCellValue((String) o);
         }else if(o instanceof Boolean){
